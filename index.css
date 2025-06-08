@@ -1,0 +1,20 @@
+
+#hero {
+    height: 30vh;
+    width: 100%;
+}
+#whyUs {
+    width: 40%;
+    float: left;
+}
+@media (max-width: 800px) {
+    #whyUS{
+        width: 100%;
+        float: left;
+    }
+}
+@media (max-width: 800px) {
+    #callToAction{
+        width: 100%;
+    }
+}
