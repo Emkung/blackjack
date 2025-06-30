@@ -1,7 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import { connectDB } from './config/db.js';
-import Product from "./module/user.model.js"
+import User from "./module/user.model.js"
 
 dotenv.config();
 
@@ -12,7 +12,7 @@ app.use(express.json());
 app.post("/api/users", async (req, res) => {
     const user = req.body; //user will send this data
 
-    if(!user.user_name || !user.price || !user.image) {
+    if(!user.username || !user.email || !user.password) {
         return res.status(400).json({success:false, message: "Please provide all fields"});
     }
 
@@ -32,7 +32,7 @@ console.log(process.env.MONGO_URI);
 app.delete("/api/user/:id", async (req, res) => {
     const {id}=req.params
     try{
-        await Product.findByIdAndDelete(id);
+        await User.findByIdAndDelete(id);
         res.json(200).json({ success: true, message: "user deleted"});
     }catch (error) {
 
