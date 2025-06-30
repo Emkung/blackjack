@@ -1,9 +1,12 @@
+import mongoose from "mongoose";
+import User from "../module/user.model.js";
+
 export const GetUser = async(req, res) => {
     try {
         const users = await User.find({});
         res.status(201).json({ success: true, data: users})
     }catch(error){
-        console.log("error in fetching products:", error.message);
+        console.log("error in fetching users:", error.message);
         res.status(500).json({success: false, message: "server Error"}); 
     }
 };
@@ -27,7 +30,7 @@ export const CreateUser = async (req, res) => {
 };
 
 export const UpdateUser = async(req, res) =>{
-    const{ id } = req.params;
+    const{id} = req.params;
     const user = req.body;
 
     try{
